@@ -1,4 +1,4 @@
-SETTING TO REMOVE INDEX.php IN CONFIG/APP remove   public $baseURL = 'http://localhost:8080/'; TO   public $baseURL = '';
+SETTING TO REMOVE INDEX.php IN CONFIG/APP remove       public $indexPage = 'index.php'; TO     public $indexPage = '';
 
 
 # CodeIgniter 4 Application Starter
