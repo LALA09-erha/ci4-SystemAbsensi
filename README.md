@@ -1,3 +1,6 @@
+SETTING TO REMOVE INDEX.php IN CONFIG/APP remove   public $baseURL = 'http://localhost:8080/'; TO   public $baseURL = '';
+
+
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
