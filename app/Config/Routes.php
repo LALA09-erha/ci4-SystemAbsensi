@@ -1,6 +1,15 @@
 <?php
 
 namespace Config;
+// connect to Home controller
+use App\Controllers\HomeController;
+use App\Controllers\Home;
+
+// connect to Validate controller | LOGIN AND REGISTER
+use App\Controllers\ValidateController;
+
+
+
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -18,7 +27,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  */
 $routes->setDefaultNamespace('App\Controllers');
 $routes->setDefaultController('Home');
-$routes->setDefaultMethod('index');
+$routes->setDefaultMethod('');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
@@ -34,22 +43,32 @@ $routes->set404Override();
  */
 
 // We get a performance increase by specifying the default
-// route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
 
-/*
- * --------------------------------------------------------------------
- * Additional Routing
- * --------------------------------------------------------------------
- *
- * There will often be times that you need additional routing and you
- * need it to be able to override any defaults in this file. Environment
- * based routes is one such time. require() additional route files here
- * to make that happen.
- *
- * You will have access to the $routes object within that file without
- * needing to reload it.
- */
+// route since we don't have to scan directories.
+$routes->get('/', [Home::class, 'index']);
+
+// Route to  the logout form
+$routes->post('/logout', [ValidateController::class, 'logout']);
+// Route to  the login form
+$routes->get('/login', [ValidateController::class, 'index']);
+
+// route to process the login form
+$routes->post('/proseslogin', [ValidateController::class, 'proseslogin']);
+
+// Route to  the regist form
+$routes->get('/regist', [ValidateController::class, 'register']);
+
+// Route to process the regist form
+$routes->post('/prosesregist', [ValidateController::class, 'prosesregist']);
+
+// Route to user page if role is admin
+$routes->get('/user', [Home::class, 'admin']);
+
+
+
+
+
+
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
