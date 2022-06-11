@@ -64,6 +64,12 @@ $routes->post('/prosesregist', [ValidateController::class, 'prosesregist']);
 // Route to user page if role is admin
 $routes->get('/user', [Home::class, 'admin']);
 
+// Route to class page 
+$routes->get('/class', [Home::class, 'class']);
+
+// Route to absent page
+$routes->get('/absent', [Home::class, 'absent']);
+
 
 
 

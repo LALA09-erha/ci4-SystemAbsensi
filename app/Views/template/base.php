@@ -55,7 +55,7 @@
             <hr class="sidebar-divider">
 
             <li class="nav-item">
-                <a class="nav-link" href="class.php">
+                <a class="nav-link" href="/class">
                     <i class="fas fa-fw fa-school"></i>
                     <span>Class Data</span></a>
             </li>
@@ -66,7 +66,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="absent.php">
+                <a class="nav-link" href="/absent">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Absent Data</span></a>
             </li>
@@ -147,16 +147,23 @@
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas  fa-user-plus fa-fw"></i>
+                                <i class="fas  fa-universal-access fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <a class="btn btn-primary" href="add<?= $page ?>">
-                                            Add <?= $page ?>
-                                        </a>
+                                        <?php
+                                        if ($page == 'user') {
+                                            echo 'YOU ARE LOGGED IN AS ADMIN';
+                                        } else {
+                                            echo '<a class="btn btn-primary" href="add' . $page . '">';
+                                            echo ' Add ' . $page;
+                                            echo '</a>';
+                                        }
+                                        ?>
+
                                     </div>
                                 </form>
                             </div>

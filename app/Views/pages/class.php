@@ -5,7 +5,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800"><?= $title ?></h1>
-    <p class="mb-4">The data here is data about user.</p>
+    <p class="mb-4">The data here is data about Class.</p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -18,31 +18,25 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Role</th>
-                            <th>Username</th>
-                            <th>Email</th>
+                            <th>Class Name</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <?php
-
                         $no = 1;
-                        if (empty($user)) {
+                        if (empty($class)) {
                             echo '<div class="alert alert-warning text-center" role="alert">Data not Result</div>';
                         } else {
-                            foreach ($user as $usr) {
+                            foreach ($class as $cls) {
                                 echo "<tr>";
                                 echo "<td>" . $no . "</td>";
-                                echo "<td>" . $usr['role'] . "</td>";
-                                echo "<td>" . $usr['username'] . "</td>";
-                                echo "<td>" . $usr['email'] . "</td>";
-                                #button edit and delete
+                                echo "<td>" . $cls['namaMatkul'] . "</td>";
                                 echo "<td>";
-                                echo "<a href='edituser.php?iduser=" . $usr['idUser'] . "' class='btn btn-primary m-1'>Edit</a>";
-                                echo "<a href='../proses/delete.php?iduser=" . $usr['idUser'] . "'  class='btn btn-danger' onclick='return confirm(\"Really delete?\")'>Delate</a>";
+                                echo "<a href='editclass.php?id=" . $cls['idMatkul'] . "' class='btn btn-primary m-1'>Edit</a>";
+                                echo "<a href='../proses/delete.php?id=" . $cls['idMatkul'] . "' class='btn btn-danger' onclick='return confirm(\"Really delete?\")'>Delate</a>";
                                 echo "</td>";
+
                                 echo "</tr>";
                                 $no++;
                             }
