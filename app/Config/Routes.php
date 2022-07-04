@@ -2,6 +2,8 @@
 
 namespace Config;
 // connect to Home controller
+
+use App\Controllers\ClassController;
 use App\Controllers\HomeController;
 use App\Controllers\Home;
 
@@ -65,10 +67,22 @@ $routes->post('/prosesregist', [ValidateController::class, 'prosesregist']);
 $routes->get('/user', [Home::class, 'admin']);
 
 // Route to class page 
-$routes->get('/class', [Home::class, 'class']);
+$routes->get('/class', [ClassController::class, 'index']);
+
+// route to add class
+$routes->get('/addclass', [ClassController::class, 'addclass']);
+
+// route to process the add class form
+$routes->post('/prosesaddclass', [ClassController::class, 'prosesadd']);
+
+// route to edit class
+$routes->get('/editclass/(:segment)', [ClassController::class, 'editclass']);
 
 // Route to absent page
 $routes->get('/absent', [Home::class, 'absent']);
+
+// route to add students
+
 
 
 

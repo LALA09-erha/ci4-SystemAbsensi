@@ -33,7 +33,7 @@
                                 echo "<td>" . $no . "</td>";
                                 echo "<td>" . $cls['namaMatkul'] . "</td>";
                                 echo "<td>";
-                                echo "<a href='editclass.php?id=" . $cls['idMatkul'] . "' class='btn btn-primary m-1'>Edit</a>";
+                                echo "<a href='editclass/" . $cls['idMatkul'] . "' class='btn btn-primary m-1'>Edit</a>";
                                 echo "<a href='../proses/delete.php?id=" . $cls['idMatkul'] . "' class='btn btn-danger' onclick='return confirm(\"Really delete?\")'>Delate</a>";
                                 echo "</td>";
 

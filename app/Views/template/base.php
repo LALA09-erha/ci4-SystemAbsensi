@@ -45,7 +45,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item <?php echo ($page == 'student') ? 'active' : '';  ?>">
                 <a class="nav-link" href="/">
                     <i class="fas fa-fw fa-address-card"></i>
                     <span>Student Data</span></a>
@@ -54,7 +54,7 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <li class="nav-item">
+            <li class="nav-item <?php echo ($page == 'class') ? 'active' : '';  ?>">
                 <a class="nav-link" href="/class">
                     <i class="fas fa-fw fa-school"></i>
                     <span>Class Data</span></a>
@@ -65,7 +65,7 @@
 
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item <?php echo ($page == 'absent') ? 'active' : '';  ?>">
                 <a class="nav-link" href="/absent">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Absent Data</span></a>
@@ -75,7 +75,11 @@
             <?php
             if ($_SESSION['role'] == 'admin') {
                 echo '<hr class="sidebar-divider">';
-                echo '<li class="nav-item">';
+                if ($page == 'user') {
+                    echo '<li class="nav-item active">';
+                } else {
+                    echo '<li class="nav-item">';
+                }
                 echo '<a class="nav-link" href="/user">';
                 echo '<i class="fas fa-fw fa-user"></i>';
                 echo '<span>User Data</span></a>';

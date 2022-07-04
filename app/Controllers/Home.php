@@ -44,21 +44,7 @@ class Home extends BaseController
             return redirect()->to('/login');
         }
     }
-    public function class()
-    {
-        if (session()->get('id')) {
-            $class = new LessonModel();
-            $data = [
-                'title' => 'Class Data',
-                'page' => 'class',
-                'class' => $class->findAll(),
-            ];
-            return view('pages/class', $data);
-        } else {
-            session()->setFlashdata('message', 'Login First');
-            return redirect()->to('/login');
-        }
-    }
+
 
     public function absent()
     {

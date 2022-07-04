@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title><?= $title ?></title>
+    <title>ADD CLASS</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center mb-5">
-                    <h2 class="heading-section"><?= $title ?></h2>
+                    <h2 class="heading-section">ADD CLASS </h2>
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -28,29 +28,17 @@
                         <div class="icon d-flex align-items-center justify-content-center">
                             <span class="fa fa-user-o"></span>
                         </div>
-                        <h3 class="text-center mb-4">Sign Up</h3>
-                        <form action="/prosesregist" method="POST" class="login-form">
+                        <h3 class="text-center mb-4">Add Class</h3>
+                        <form action="/prosesaddclass" method="POST" class="login-form">
                             <?= csrf_field() ?>
                             <div class="form-group">
-                                <input type="hidden" name="role" class="form-control rounded-left" value="user"
+                                <input type="hidden" name="iduser" class="form-control rounded-left" required
+                                    value=<?php echo $_SESSION['id'] ?>>
+                                <input type="text" name="nama" class="form-control rounded-left" placeholder="CLASS"
                                     required>
-                                <input type="text" name="username" class="form-control rounded-left"
-                                    placeholder="Username" required>
-                            </div>
-                            <div class="form-group d-flex">
-                                <input type="email" name="email" class="form-control rounded-left" placeholder="Email"
-                                    required>
-                            </div>
-                            <div class="form-group d-flex">
-                                <input type="password" name="password" class="form-control rounded-left"
-                                    placeholder="Password" required>
-                            </div>
-                            <div class="form-group d-flex">
-                                <input type="password" name="Cpassword" class="form-control rounded-left"
-                                    placeholder="Confirm Password" required>
                             </div>
                             <?php
-                            if (!empty(session()->getFlashdata('message'))) {
+                            if (!empty($_SESSION['message'])) {
                                 echo '<div class="alert alert-warning text-center" role="alert">' . $_SESSION['message'] . '</div>';
                                 unset($_SESSION['message']);
                             }
@@ -60,7 +48,7 @@
                                     class="form-control btn btn-primary rounded submit px-3">Submit</button>
                             </div>
                             <div class="row justify-content-center">
-                                <span>Already an account? <a href="/login" class="text-center">Login</a></span>
+                                <span>Don't want to add ? <a href="/class" class="text-center">Come Back</a></span>
                             </div>
                         </form>
                     </div>
