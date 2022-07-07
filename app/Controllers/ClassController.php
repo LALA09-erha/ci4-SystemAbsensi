@@ -79,4 +79,47 @@ class ClassController extends BaseController
             return redirect()->to('/login');
         }
     }
+
+    public function prosesedit()
+    {
+        $id       = intval($this->request->getPost('iduser'));
+        $classname = $this->request->getPost('nama');
+        $class = new LessonModel();
+        // check if class already exist
+        $check = $class->where('namaMatkul', $classname)->where('kodeUser', $id)->findAll();
+        if (count($check) > 0) {
+            if ($check[0]['namaMatkul'] == $this->request->getpost('nama') && $check[0]['kodeUser'] == $this->request->getpost('iduser')) {
+                session()->setFlashdata('message', 'Class No Changed');
+                return redirect()->to('/class');
+            } else {
+                session()->setFlashdata('message', 'Class already exist');
+                return redirect()->to('/class');
+            }
+        } else {
+            // update class
+            $data = [
+                'namaMatkul' => $classname,
+            ];
+            $class->where('idMatkul', $id)->update($data);
+            session()->setFlashdata('message', 'Class updated');
+            return redirect()->to('/class');
+        }
+    }
+
+    public function delete($id)
+    {
+        if (session()->get('id')) {
+            $class = new LessonModel();
+            // get class data by id
+            $classes = $class->where('idMatkul', $id)->findAll();
+            if ($classes[0]['kodeUser'] == session()->get('id') || session()->get('role') == 'admin') {
+                $class->where('idMatkul', $id)->delete();
+                session()->setFlashdata('message', 'Class deleted');
+                return redirect()->to('/class');
+            }
+        } else {
+            session()->setFlashdata('message', 'Login First');
+            return redirect()->to('/login');
+        }
+    }
 }

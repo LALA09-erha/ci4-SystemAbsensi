@@ -29,11 +29,11 @@
                             <span class="fa fa-user-o"></span>
                         </div>
                         <h3 class="text-center mb-4">Edit Class</h3>
-                        <form action="#" method="POST" class="login-form">
+                        <form action="/proseseditclass" method="POST" class="login-form">
                             <?= csrf_field() ?>
                             <div class="form-group">
                                 <input type="hidden" name="iduser" class="form-control rounded-left" required
-                                    value=<?php echo $_SESSION['id'] ?>>
+                                    value=<?php echo $class[0]['kodeUser'] ?>>
                                 <input type="text" name="nama" class="form-control rounded-left" placeholder="Class"
                                     value="<?php echo $class[0]['namaMatkul'] ?>" required>
                             </div>

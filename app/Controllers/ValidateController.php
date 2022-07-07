@@ -11,6 +11,9 @@ class ValidateController extends BaseController
     // mengalihkan route ke halaman login
     public function index()
     {
+        if (session()->get('id')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Login',
         ];
@@ -48,6 +51,9 @@ class ValidateController extends BaseController
     // show view register form
     public function register()
     {
+        if (session()->get('id')) {
+            return redirect()->to('/');
+        }
         $data = [
             'title' => 'Register',
         ];

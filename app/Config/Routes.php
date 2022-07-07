@@ -3,6 +3,8 @@
 namespace Config;
 // connect to Home controller
 
+use App\Controllers\AbsentController;
+use App\Controllers\AdminController;
 use App\Controllers\ClassController;
 use App\Controllers\HomeController;
 use App\Controllers\Home;
@@ -64,7 +66,7 @@ $routes->get('/regist', [ValidateController::class, 'register']);
 $routes->post('/prosesregist', [ValidateController::class, 'prosesregist']);
 
 // Route to user page if role is admin
-$routes->get('/user', [Home::class, 'admin']);
+$routes->get('/user', [AdminController::class, 'index']);
 
 // Route to class page 
 $routes->get('/class', [ClassController::class, 'index']);
@@ -78,8 +80,14 @@ $routes->post('/prosesaddclass', [ClassController::class, 'prosesadd']);
 // route to edit class
 $routes->get('/editclass/(:segment)', [ClassController::class, 'editclass']);
 
+// route to process the edit class form
+$routes->post('/proseseditclass', [ClassController::class, 'prosesedit']);
+
+// route to delete class
+$routes->get('/deleteclass/(:segment)', [ClassController::class, 'delete']);
+
 // Route to absent page
-$routes->get('/absent', [Home::class, 'absent']);
+$routes->get('/absent', [AbsentController::class, 'index']);
 
 // route to add students
 
