@@ -1,6 +1,9 @@
-SETTING TO REMOVE INDEX.php IN CONFIG/APP remove       public $indexPage = 'index.php'; TO     public $indexPage = '';
-
-EDIT CLASS ~~~~~~~~~~~~~~~~~~
+THe App, not finished yet.
+# Minus:
+1. User Management
+2. Student Management
+3. Absent Management
+4. attendance Management
 
 # CodeIgniter 4 Application Starter
 
