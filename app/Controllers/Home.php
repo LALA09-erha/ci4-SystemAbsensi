@@ -12,7 +12,8 @@ class Home extends BaseController
     #IF SUCCESS LOGIN REDIRECT TO HOME PAGE
     public function index()
     {
-        if (session()->get('id')) {
+        // dd(session()->get('id'));
+        if (session()->get('id') != null) {
             $mahasiswa = new StudentModel();
             $data = [
                 'title' => 'Student Data',

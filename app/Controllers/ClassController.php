@@ -11,7 +11,7 @@ class ClassController extends BaseController
 {
     public function index()
     {
-        if (session()->get('id')) {
+        if (session()->get('id')!= null) {
             $class = new LessonModel();
             $data = [
                 'title' => 'Class Data',
@@ -27,7 +27,7 @@ class ClassController extends BaseController
 
     public function addclass()
     {
-        if (session()->get('id')) {
+        if (session()->get('id')!= null) {
             $class = new LessonModel();
             $data = [
                 'title' => 'Add Class',
@@ -65,7 +65,7 @@ class ClassController extends BaseController
 
     public function editclass($id)
     {
-        if (session()->get('id')) {
+        if (session()->get('id')!= null) {
             $class = new LessonModel();
             // get class data by id
             $data = [
@@ -108,7 +108,7 @@ class ClassController extends BaseController
 
     public function delete($id)
     {
-        if (session()->get('id')) {
+        if (session()->get('id')!= null) {
             $class = new LessonModel();
             // get class data by id
             $classes = $class->where('idMatkul', $id)->findAll();

@@ -29,11 +29,11 @@ class ValidateController extends BaseController
         $password = $this->request->getVar('password');
         $cekUser = $user->where('username', $username)->first();
         if ($cekUser) {
-            if (password_verify($password, $cekUser['password'])) {
+            if (password_verify($password, $cekUser['PASSWORD'])) {
                 $data = [
-                    'id' => $cekUser['idUser'],
-                    'username' => $cekUser['username'],
-                    'role' => $cekUser['role'],
+                    'id' => $cekUser['IDUSER'],
+                    'username' => $cekUser['USERNAME'],
+                    'role' => $cekUser['ROLE'],
                 ];
                 session()->set($data);
                 session()->setFlashdata('message', 'Login Success');
@@ -80,10 +80,10 @@ class ValidateController extends BaseController
         } else {
             $passwordhash = password_hash($password, PASSWORD_DEFAULT);
             $data = [
-                'username' => $username,
-                'password' => $passwordhash,
-                'email' => $email,
-                'role' => $role
+                'USERNAME' => $username,
+                'PASSWORD' => $passwordhash,
+                'EMAIL' => $email,
+                'ROLE' => $role
             ];
             $user->insert($data);
             session()->setFlashdata('message', 'Success Register');
