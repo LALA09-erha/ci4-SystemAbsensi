@@ -6,8 +6,8 @@ use CodeIgniter\Model;
 
 class LessonModel extends Model
 {
-    protected $table      = 'matakuliah';
-    protected $primaryKey = 'idMatkul';
+    protected $table      = 'pelajaran';
+    protected $primaryKey = 'IDPELAJARAN';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['kodeUser', 'namaMatkul'];
+    protected $allowedFields = ['IDUSER', 'NAMAPELAJARAN'];
 }

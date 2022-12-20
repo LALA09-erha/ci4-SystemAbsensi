@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class AbsentModel extends Model
 {
     protected $table      = 'absen';
-    protected $primaryKey = 'idAbsen';
+    protected $primaryKey = 'IDABSEN';
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['kodeUser', 'kodeSiswa', 'kodematkul', 'tanggal'];
+    protected $allowedFields = ['IDUSER', 'IDSISWA', 'IDPELAJARAN', 'TANGGAL'];
 }
