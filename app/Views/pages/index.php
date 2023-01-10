@@ -28,20 +28,21 @@
                         if (empty($mahasiswa)) {
                             echo '<div class="alert alert-warning text-center" role="alert">Data not Result</div>';
                         } else {
+                            // dd($mahasiswa);
                             foreach ($mahasiswa as $mhs) {
                                 echo "<tr>";
-                                if (preg_match("/-/", $mhs['NIM'])) {
-                                    $posisi = strpos($mhs['NIM'], '-');
-                                    $NIM = substr($mhs['NIM'], $posisi + 1);
+                                if (preg_match("/-/", $mhs['IDSISWA'])) {
+                                    $posisi = strpos($mhs['IDSISWA'], '-');
+                                    $NIM = substr($mhs['IDSISWA'], $posisi + 1);
                                     echo "<td>" . $NIM . "</td>";
                                 } else {
-                                    echo "<td>" . $mhs['NIM'] . "</td>";
+                                    echo "<td>" . $mhs['IDSISWA'] . "</td>";
                                 }
-                                echo "<td>" . $mhs['namaSiswa'] . "</td>";
+                                echo "<td>" . $mhs['NAMASISWA'] . "</td>";
                                 #button edit and delete
                                 echo "<td>";
-                                echo "<a href='editstudent.php?NIM=" . $mhs['NIM'] . "' class='btn btn-primary m-1'>Edit</a>";
-                                echo "<a href='../proses/delete.php?NIM=" . $mhs['NIM'] . "'  class='btn btn-danger' onclick='return confirm(\"Really delete?\")'>Delate</a>";
+                                echo "<a href='/editstudent/" .session()->get('id')."/". $mhs['IDSISWA'] . "' class='btn btn-primary m-1'>Edit</a>";
+                                echo "<a href='/deletestudent/".session()->get('id')."/" . $mhs['IDSISWA'] . "'  onclick=confirm('"."SURE?"."')  class='btn btn-danger' onclick='return confirm(\"Really delete?\")'>Delate</a>";
                                 echo "</td>";
                                 echo "</tr>";
                             }

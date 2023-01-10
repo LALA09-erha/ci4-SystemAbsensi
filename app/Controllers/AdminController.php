@@ -27,16 +27,5 @@ class AdminController extends BaseController
         }
     }
 
-    public function edituser()
-    {
-        //
-    }
-    public function prosesedit()
-    {
-        //
-    }
-    public function deleteuser()
-    {
-        //
-    }
+  
 }

@@ -7,7 +7,7 @@ use App\Controllers\AbsentController;
 use App\Controllers\AdminController;
 use App\Controllers\ClassController;
 use App\Controllers\HomeController;
-use App\Controllers\Home;
+use App\Controllers\StudentController;
 
 // connect to Validate controller | LOGIN AND REGISTER
 use App\Controllers\ValidateController;
@@ -30,7 +30,7 @@ if (is_file(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Home');
+$routes->setDefaultController('StudentController');
 $routes->setDefaultMethod('');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -49,7 +49,7 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 
 // route since we don't have to scan directories.
-$routes->get('/', [Home::class, 'index']);
+$routes->get('/', [StudentController::class, 'index']);
 
 // Route to  the logout form
 $routes->post('/logout', [ValidateController::class, 'logout']);
@@ -65,8 +65,24 @@ $routes->get('/regist', [ValidateController::class, 'register']);
 // Route to process the regist form
 $routes->post('/prosesregist', [ValidateController::class, 'prosesregist']);
 
-// Route to user page if role is admin
+// Route to user page if role is student
 $routes->get('/user', [AdminController::class, 'index']);
+
+//route to add student in student:
+$routes->get('/addstudent',[StudentController::class,'addstudent']);
+
+
+// route to proses student in student
+$routes->post('prosesaddstudent',[StudentController::class, 'prosesaddstudent']);
+
+//route to edit student in student
+$routes->get('/editstudent/(:segment)/(:segment)','StudentController::editstudent/$1/$2');
+
+//route proses edit student in student 
+$routes->post('/proseseditstudent' , [StudentController::class, 'proseseditstudent']);
+
+//route to delete student in student
+$routes->get('/deletestudent/(:segment)/(:segment)', 'StudentController::deletestudent/$1/$2');
 
 // Route to class page 
 $routes->get('/class', [ClassController::class, 'index']);
