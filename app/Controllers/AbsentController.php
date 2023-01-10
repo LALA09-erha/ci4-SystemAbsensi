@@ -13,11 +13,12 @@ class AbsentController extends BaseController
     public function index()
     {
         $db      = \Config\Database::connect();
-        $query = $db->query('SELECT * FROM absen,mahasiswa,matakuliah,users WHERE absen.kodeUser = users.idUser AND absen.kodeSiswa = mahasiswa.NIM AND absen.kodeMatkul = matakuliah.idMatkul AND users.idUser =' . session()->get('id'));
+        $query = $db->query('SELECT * FROM absen,siswa,pelajaran,user WHERE absen.IDUSER = user.IDUSER AND absen.IDSISWA = siswa.IDSISWA AND absen.IDPELAJARAN = pelajaran.IDPELAJARAN AND user.IDUSER =' . session()->get('id'));
         $result = $query->getResultArray();
 
         $id = ((session()->get('id') + 2001) * 9) - 11;
-        if (session()->get('id') && session()->get('role') == 'user') {
+        
+        if (isset($_SESSION['id']) && $_SESSION['role'] == 'user') {
 
             $data = [
                 'title' => 'Absent Data',
@@ -26,7 +27,7 @@ class AbsentController extends BaseController
                 'data' => $id,
             ];
             return view('pages/absent', $data);
-        } else if (session()->get('id') && session()->get('role') == 'admin') {
+        } else if (isset($_SESSION['id']) && $_SESSION['role'] == 'admin') {
 
             $data = [
                 'title' => 'Absent Data',

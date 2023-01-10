@@ -3,7 +3,8 @@ SETTING TO REMOVE INDEX.php IN CONFIG/APP remove       public $indexPage = 'inde
 
 # CodeIgniter 4 Application Starter
 
-NEXT STEP : 
-- class
-- absen
-- profile
+NEXT STEP :
+-  Crud:
+    - class
+    - absen
+    - profile
